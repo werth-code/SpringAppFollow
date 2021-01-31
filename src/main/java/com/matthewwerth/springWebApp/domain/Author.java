@@ -14,7 +14,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany(mappedBy = "authors") // set this as the relationship - add annotation in Book class
+    @ManyToMany(mappedBy = "authors") // set this as the relationship - add annotation in Book class // // TODO: 1/31/21 not entirely clear how this works
     private Set<Book> books = new HashSet<>();
 
     public Author(){};
