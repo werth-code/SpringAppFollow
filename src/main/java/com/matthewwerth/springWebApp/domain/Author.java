@@ -1,8 +1,18 @@
 package com.matthewwerth.springWebApp.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Set;
 
+@Entity // mark this as a JPA Entity
 public class Author {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // How to order - auto by database
+    private Long id;
+
     private String firstName;
     private String lastName;
     private Set<Book> books;
@@ -13,6 +23,10 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = books;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {

@@ -2,9 +2,18 @@ package com.matthewwerth.springWebApp.domain;
 
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Set;
 
+@Entity // java persistence entity
 public class Book {
+    @Id // set this as the id for our database
+    @GeneratedValue(strategy = GenerationType.AUTO) // set this as our ordering strategy
+    private Long id;
+
     private String title;
     private String isbn;
     private Set<Author> authors;
