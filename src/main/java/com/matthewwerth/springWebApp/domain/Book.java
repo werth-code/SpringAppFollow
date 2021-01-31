@@ -3,6 +3,7 @@ package com.matthewwerth.springWebApp.domain;
 import org.springframework.web.servlet.view.AbstractUrlBasedView;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity // java persistence entity
@@ -17,15 +18,14 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
                 inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
 
+    private Set<Author> authors = new HashSet<>();
 
     private Book(){};
 
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public Long getId() {
