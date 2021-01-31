@@ -1,9 +1,6 @@
 package com.matthewwerth.springWebApp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity // mark this as a JPA Entity
@@ -15,6 +12,8 @@ public class Author {
 
     private String firstName;
     private String lastName;
+
+    @ManyToMany(mappedBy = "authors") // set this as the relationship - add annotation in Book class
     private Set<Book> books;
 
     public Author(){};
@@ -27,6 +26,10 @@ public class Author {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
